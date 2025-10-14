@@ -1,0 +1,57 @@
+<app-navbar />
+
+<main class="container my-5">
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-kurama">Clãs</h1>
+    <p class="lead">Explore os clãs do mundo ninja</p>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6 mx-auto">
+      <input 
+        type="text" 
+        class="form-control form-control-lg" 
+        placeholder="Buscar clã..."
+        [(ngModel)]="searchTerm"
+      >
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="text-center my-5">
+      <div class="spinner-border text-kurama" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+  } @else if (filteredClans().length === 0) {
+    <div class="alert alert-info text-center">
+      Nenhum clã encontrado
+    </div>
+  } @else {
+    <div class="cards-grid">
+      @for (clan of filteredClans(); track clan.id) {
+        <app-character-card [item]="toCardItem(clan)" />
+      }
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center gap-3 mt-5">
+      <button 
+        class="btn btn-kurama"
+        [disabled]="currentPage() === 1"
+        (click)="prevPage()"
+      >
+        Anterior
+      </button>
+      <span class="fs-5">Página {{ currentPage() }} de {{ totalPages() }}</span>
+      <button 
+        class="btn btn-kurama"
+        [disabled]="currentPage() === totalPages()"
+        (click)="nextPage()"
+      >
+        Próxima
+      </button>
+    </div>
+  }
+</main>
+
+<app-footer />
