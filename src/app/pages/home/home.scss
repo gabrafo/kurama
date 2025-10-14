@@ -1,0 +1,176 @@
+// Cor da Kurama
+$kurama-orange: #EB6A28;
+$kurama-orange-light: #ff7f3f;
+$kurama-orange-dark: #d65a1f;
+
+// Layout principal para manter o footer no final
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+// Conteúdo principal
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  // Esconder scrollbar mas manter funcionalidade
+  scrollbar-width: thin;
+  scrollbar-color: $kurama-orange transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $kurama-orange;
+    border-radius: 3px;
+  }
+}
+
+// Seção de introdução
+.intro-section {
+  margin-bottom: 1rem;
+}
+
+// Texto com cor Kurama
+.kurama-text {
+  color: $kurama-orange !important;
+}
+
+.intro-text {
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.fujin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto 0;
+  width: 100%;
+  max-width: 17rem;
+  padding: 0.5rem 0;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+// Seção do botão
+.button-section {
+  margin: 1rem 0 0.5rem;
+}
+
+// Sobrescrever classes do Bootstrap com cor Kurama
+.text-warning {
+  color: $kurama-orange !important;
+}
+
+.btn-warning {
+  background-color: $kurama-orange !important;
+  border-color: $kurama-orange-dark !important;
+
+  &:hover {
+    background-color: $kurama-orange-light !important;
+    border-color: $kurama-orange !important;
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem 0.75rem 0.5rem;
+  }
+
+  .intro-section {
+    margin-bottom: 0.5rem;
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .intro-text {
+    font-size: 0.9rem;
+    line-height: 1.25;
+
+    br {
+      display: none;
+    }
+  }
+
+  .fujin-container {
+    max-width: 14rem;
+    padding: 0.2rem 0;
+  }
+
+  .button-section {
+    margin: 0.75rem 0 0.5rem;
+  }
+
+  .footer-content {
+    padding: 0.5rem;
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .intro-section h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-text {
+    font-size: 0.85rem;
+    line-height: 1.25;
+  }
+
+  .fujin-container {
+    max-width: 12rem;
+    padding: 0.2rem 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .intro-section {
+    margin-bottom: 0.75rem;
+
+    h1 {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  .fujin-container {
+    max-width: 20rem;
+    padding: 0.25rem 0;
+  }
+
+  .button-section {
+    margin: 1.5rem 0 1rem;
+  }
+}
