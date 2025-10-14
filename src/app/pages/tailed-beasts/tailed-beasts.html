@@ -1,0 +1,65 @@
+<app-navbar />
+
+<main class="tailed-beasts-content">
+  <section class="search-section">
+    <h1 class="page-title kurama-text">Bijuus (Tailed Beasts)</h1>
+    <div class="search-box">
+      <input
+        type="text"
+        class="form-control search-input"
+        placeholder="Buscar bijuu..."
+        [ngModel]="searchTerm()"
+        (ngModelChange)="searchTerm.set($event)"
+      />
+    </div>
+  </section>
+
+  @if (loading()) {
+    <div class="loading-container">
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+      <p class="loading-text">Carregando bijuus...</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="alert alert-danger" role="alert">
+      {{ error() }}
+    </div>
+  }
+
+  @if (!loading() && !error()) {
+    <section class="tailed-beasts-grid">
+      @for (beast of filteredTailedBeasts(); track beast.id) {
+        <app-character-card [item]="toCardItem(beast)" />
+      } @empty {
+        <div class="no-results">
+          <p>Nenhum bijuu encontrado.</p>
+        </div>
+      }
+    </section>
+
+    <div class="pagination-controls">
+      <button
+        class="btn btn-outline-warning"
+        (click)="prevPage()"
+        [disabled]="currentPage() === 1"
+      >
+        ← Anterior
+      </button>
+      <span class="page-info">
+        Página {{ currentPage() }} de {{ totalPages() }}
+      </span>
+      <button
+        class="btn btn-outline-warning"
+        (click)="nextPage()"
+        [disabled]="currentPage() === totalPages()"
+      >
+        Próxima →
+      </button>
+    </div>
+  }
+</main>
+
+<app-footer />
