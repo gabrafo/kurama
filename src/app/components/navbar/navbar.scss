@@ -1,0 +1,26 @@
+// Cor da Kurama
+$kurama-orange: #EB6A28;
+$kurama-orange-light: #ff7f3f;
+
+.navbar-brand {
+  color: $kurama-orange !important;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $kurama-orange-light !important;
+  }
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+  color: #ffffff !important;
+  
+  &.active {
+    color: $kurama-orange !important;
+    font-weight: 600;
+  }
+  
+  &:hover:not(.active) {
+    color: $kurama-orange-light !important;
+  }
+}
