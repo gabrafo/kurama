@@ -2,6 +2,8 @@
 
 Aplicação web para explorar informações sobre o universo de Naruto, incluindo personagens, bijuus e clãs.
 
+**Deploy**: https://kurama-eta.vercel.app/
+
 ## Tecnologias Utilizadas
 
 - Angular: 20.3.0
